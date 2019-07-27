@@ -1,0 +1,28 @@
+/* input some characters and show the rest of characters after the first space */
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    char str[80];
+    char *p;
+
+    printf("input characters: ");
+    gets(str);
+
+    p = str;
+
+    for (; p < str + strlen(str) - 1; p++) {
+        if (*p == ' ')
+            break;
+    }
+
+    do {
+        p++;
+        printf("%c", *p);
+    } while (*p);
+
+    return 0;
+
+}
