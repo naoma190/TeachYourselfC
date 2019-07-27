@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    int nums[10], i, j, mode, count1, count2;
+
+    for (i = 0; i < 10; i++) {
+        printf("input 10 numbers: ");
+        scanf("%d", &nums[i]);
+    }
+
+    count1 = 1;
+    for (i = 0; i < 10; i++) {
+        count2 = 0;
+        for (j = 0; j < 10; j++) {
+            if (nums[i] == nums[j])
+                count2++;
+            }
+            if (count1 < count2) {
+                count1 = count2;
+                mode = nums[i];
+        }
+    }
+
+    printf("%d", mode);
+
+    return 0;
+
+}
