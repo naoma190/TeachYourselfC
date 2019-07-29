@@ -1,0 +1,32 @@
+//Make original function of mystrlen() which works same as the standard function of strlen()
+
+#include <stdio.h>
+#include <string.h>
+
+void mystrlen(char *ch);
+
+int main(void)
+{
+    char str[80];
+
+    printf("input a string: ");
+    gets(str);
+
+    mystrlen(str);
+
+    return 0;
+
+}
+
+void mystrlen(char *ch)
+{
+    int i = 0;
+
+    while (*ch) {
+        i++;
+        ch++;
+    }
+
+    printf("%d", i);
+
+}
