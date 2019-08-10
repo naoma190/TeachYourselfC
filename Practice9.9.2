@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+int main(int argc, char *argv[])
+{
+    FILE *to, *from;
+    char str[80], select;
+    int i;
+
+    if (argc != 3) {
+        printf("parameter error");
+        exit(1);
+    }
+
+    if ((from = fopen(argv[1], "rb")) == NULL) {
+        printf("open error");
+        exit(1);
+    }
+
+    if ((to = fopen(argv[2], "wb")) == NULL) {
+        printf("to open error");
+        exit(1);
+    }
+
+    while (!feof(from)) {
+        fgets(str, sizeof str, from);
+        for (i = 0; i <= strlen(str); i++)
+            str[i] = toupper(str[i]);
+        fputs(str, to);
+    }
+
+    fclose(from);
+    fclose(to);
+
+    return 0;
+}
