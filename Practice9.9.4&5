@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+    FILE *fp;
+    int num, i;
+
+    if ((fp = fopen("rand", "wb")) == NULL) {
+        printf("open error ");
+        exit(1);
+    }
+
+    for (i = 0; i < 100; i++) {
+        num = rand();
+        fwrite(&num, sizeof num, 1, fp);
+
+    }
+    fclose(fp);
+
+    if ((fp = fopen("rand", "rb")) == NULL) {
+        printf("read open error");
+        exit(1);
+    }
+
+
+    printf("%ld\n", ftell(fp));
+    for (i = 0; i < 100; i++) {
+        printf("%ld\n", ftell(fp));
+        fread(&num, sizeof num, 1, fp);
+        printf("%d\n", num);
+    }
+
+    fclose(fp);
+
+    return 0;
+}
